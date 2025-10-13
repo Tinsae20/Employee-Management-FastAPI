@@ -1,36 +1,16 @@
-# from supabase import create_client, Client
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from routes import employee_routes
 
-# supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+app = FastAPI()
 
-#inster new row
-# new_row = {'first_name': 'John'}
-# supabase.table('fastapi-demo-table').insert(new_row).execute()
+# Moutnt the static files directory
+app.mount("/static", StaticFiles(directory="./fast-api-project/static"), name="static")
 
-#update row
-# new_row = {'first_name': 'Mary'}
-# supabase.table('fastapi-demo-table').update(new_row).eq('id', 2).execute()
+# Setup templates
+templates = Jinja2Templates(directory="./fast-api-project/templates")
 
-#delete row
-# supabase.table('fastapi-demo-table').delete().eq('id', 2).execute()
+# Include routers
+app.include_router(employee_routes.router) # type: ignore
 
-#get all rows
-# results = supabase.table('fastapi-demo-table').select('*').execute()
-# print(results)
-
-# response = supabase.storage.from_('fastapi-demo-bucket').get_public_url('image_1.jpeg')
-# print(response)
-
-
-# from fastapi import FastAPI
-#
-# app = FastAPI()
-#
-#
-# @app.get("/")
-# async def root():
-#     return {"message": "Hello World"}
-#
-#
-# @app.get("/hello/{name}")
-# async def say_hello(name: str):
-#     return {"message": f"Hello {name}"}
