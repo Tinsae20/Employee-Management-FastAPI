@@ -20,6 +20,7 @@ async def read_employees(request: Request):
             employees = response.get('data', [])
     except Exception as e:
         print("Error fetching employees:", e)
+    print(employees)
     return templates.TemplateResponse("index.html", {"request": request, "employees": employees})
 
 @router.get("/add", response_class=HTMLResponse)
