@@ -1,6 +1,6 @@
 # models.py
 from pydantic import BaseModel, EmailStr, Field, field_validator
-from .forms import as_form
+from forms import as_form
 
 @as_form
 class EmployeeBase(BaseModel):
