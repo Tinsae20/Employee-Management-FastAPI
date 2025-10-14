@@ -6,12 +6,13 @@ from typing import cast
 from database import supabase, SUPABASE_BUCKET, SUPABASE_URL
 from models import EmployeeCreate, EmployeeUpdate
 from forms import as_form
+from auth import get_current_user
 
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
 
 @router.get("/", response_class=HTMLResponse)
-async def read_employees(request: Request):
+async def read_employees(request: Request, current_user: dict = Depends(get_current_user)):
     employees = []
     try:
         response = supabase.table('employees').select('*').eq('is_active', True).execute()
@@ -22,14 +23,15 @@ async def read_employees(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, "employees": employees})
 
 @router.get("/add", response_class=HTMLResponse)
-async def add_employee_form(request: Request):
+async def add_employee_form(request: Request, current_user: dict = Depends(get_current_user)):
     return templates.TemplateResponse("add_employee.html", {"request": request})
 
 @router.post("/add")
 async def add_employee(
     request: Request,
     employee: EmployeeCreate = Depends(EmployeeCreate.as_form),# type: ignore[attr-defined]
-    image: UploadFile = File(None)
+    image: UploadFile = File(None),
+    current_user: dict = Depends(get_current_user)
 ):
     image_url = None
     if image and image.filename != "":
@@ -51,7 +53,7 @@ async def add_employee(
     return RedirectResponse("/", status_code=303)
 
 @router.get('/edit/{employee_id}', response_class=HTMLResponse)
-async def edit_employee_form(request: Request, employee_id: int):
+async def edit_employee_form(request: Request, employee_id: int, current_user: dict = Depends(get_current_user)):
     response = supabase.table('employees').select('*').eq('id',employee_id).execute()
     employee = response.data[0] if response.data else None # type: ignore
     if not employee:
@@ -63,7 +65,8 @@ async def edit_employee(
     request: Request,
     employee_id: int,
     employee: EmployeeUpdate = Depends(EmployeeUpdate.as_form), # type: ignore
-    image: UploadFile = File(None)
+    image: UploadFile = File(None),
+    current_user: dict = Depends(get_current_user)
 ):
     image_url = None
     if image and image.filename != "":
@@ -81,6 +84,6 @@ async def edit_employee(
     return RedirectResponse('/', status_code=303)
 
 @router.get('/deactivate/{employee_id}')
-async def decativate_employee(employee_id: int):
+async def decativate_employee(employee_id: int, current_user: dict = Depends(get_current_user)):
     supabase.table('employees').update({'is_active': False}).eq("id", employee_id).execute()
     return RedirectResponse('/', status_code=303)

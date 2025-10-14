@@ -10,8 +10,9 @@ load_dotenv()
 SUPABASE_URL = os.getenv('SUPABASE_URL')
 SUPABASE_KEY = os.getenv('SUPABASE_KEY')
 SUPABASE_BUCKET = os.getenv('SUPABASE_BUCKET')
+SUPABASE_JWT_SECRET = os.getenv('SUPABASE_JWT_SECRET')
 
-if not all([SUPABASE_URL, SUPABASE_KEY, SUPABASE_BUCKET]):
+if not all([SUPABASE_URL, SUPABASE_KEY, SUPABASE_BUCKET, SUPABASE_JWT_SECRET]):
     raise EnvironmentError("One or more Supabase environment variables are missing.")
 
 # Initialize Supabase client
