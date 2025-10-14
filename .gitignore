@@ -50,7 +50,6 @@ coverage.xml
 .env.*
 
 # FastAPI static and media files (if any)
-static/
 media/
 
 # Migrations (if using Alembic)

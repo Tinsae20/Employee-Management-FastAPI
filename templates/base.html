@@ -1,24 +1,29 @@
-<!-- templates/base.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Repository</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
 </head>
 <body>
     <header>
         <nav class="navbar">
-            <h1 class="navbar-brand">Employee Repository</h1>
-            <div class="navbar-nav">
-                {% if request.cookies.get('access_token') %}
-                    <a href="/">Home</a>
-                    <a href="/add">Add Employee</a>    
-                    <a href="/logout">Logout</a>
-                {% else %}
-                    <a href="/login">Login</a>
-                    <a href="/signup">Sign Up</a>
-                {% endif %}
+            <div class="navbar-content">
+                <a href="/" class="navbar-brand">Employee Repository</a>
+                <div class="navbar-nav">
+                    {% if request.cookies.get('access_token') %}
+                        <a href="/">Home</a>
+                        <a href="/add">Add Employee</a>    
+                        <a href="/logout">Logout</a>
+                    {% else %}
+                        <a href="/login">Login</a>
+                        <a href="/signup">Sign Up</a>
+                    {% endif %}
+                </div>
             </div>
         </nav>
     </header>
