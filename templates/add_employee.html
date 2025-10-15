@@ -1,27 +1,60 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Add New Employee</h2>
-<form action="/add" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="first_name">First Name:</label>
-        <input type="text" name="first_name" id="first_name" required class="form-control">
+<div class="form-page-container">
+    <div class="form-header">
+        <h2 class="form-page-title">Add New Employee</h2>
     </div>
-    <div class="form-group">
-        <label for="last_name">Last Name:</label>
-        <input type="text" name="last_name" id="last_name" required class="form-control">
+    
+    <div class="form-wrapper">
+        <form action="/add" method="post" enctype="multipart/form-data" class="employee-form">
+            <div class="form-fields">
+                <div class="input-field">
+                    <label for="first_name" class="input-label">First Name</label>
+                    <div class="input-container">
+                        <input type="text" name="first_name" id="first_name" required class="form-input" placeholder="First Name">
+                    </div>
+                </div>
+                
+                <div class="input-field">
+                    <label for="last_name" class="input-label">Last Name</label>
+                    <div class="input-container">
+                        <input type="text" name="last_name" id="last_name" required class="form-input" placeholder="Last Name">
+                    </div>
+                </div>
+                
+                <div class="input-field">
+                    <label for="email" class="input-label">Email</label>
+                    <div class="input-container">
+                        <input type="email" name="email" id="email" required class="form-input" placeholder="Email">
+                    </div>
+                </div>
+                
+                <div class="input-field">
+                    <label for="salary" class="input-label">Salary</label>
+                    <div class="input-container">
+                        <input type="number" name="salary" id="salary" step="0.01" required class="form-input" placeholder="Salary">
+                    </div>
+                </div>
+                
+                <div class="input-field">
+                    <label for="image" class="input-label">Image</label>
+                    <div class="file-upload-container">
+                        <div class="file-input-wrapper">
+                            <label for="image" class="file-upload-btn">
+                                Upload File
+                                <input type="file" name="image" id="image" class="file-input" accept="image/*">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">
+                    Submit
+                </button>
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="salary">Salary:</label>
-        <input type="number" name="salary" id="salary" step="0.01" required class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="image">Image:</label>
-        <input type="file" name="image" id="image" class="form-control">
-    </div>
-    <button type="submit">Add Employee</button>
-</form>
+</div>
 {% endblock %}

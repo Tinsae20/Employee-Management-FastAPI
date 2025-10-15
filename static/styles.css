@@ -381,3 +381,548 @@ body {
         border-right: none;
     }
 }
+
+/* new * /
+
+/* Form Page Styles */
+.form-page-container {
+    background-color: #e9f2ff;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 668px;
+    width: 100%;
+}
+
+.form-header {
+    padding: 16px;
+    border-radius: var(--radius);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-page-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.form-wrapper {
+    width: 100%;
+}
+
+.employee-form {
+    width: 100%;
+}
+
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+/* Input Field Styles */
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.input-label {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+.input-container {
+    background-color: var(--white);
+    height: 44px;
+    border-radius: var(--radius);
+    position: relative;
+    width: 100%;
+}
+
+.form-input {
+    width: 100%;
+    height: 100%;
+    padding: 12px 14px;
+    border: none;
+    border-radius: var(--radius);
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    background: transparent;
+    outline: none;
+    color: var(--text-dark);
+}
+
+.form-input::placeholder {
+    color: var(--text-light);
+}
+
+.input-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    pointer-events: none;
+    box-shadow: var(--shadow);
+}
+
+.input-container:focus-within::after {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 99, 229, 0.1);
+}
+
+/* File Upload Styles */
+.file-upload-container {
+    width: 100%;
+}
+
+.file-input-wrapper {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+}
+
+.file-display {
+    background-color: var(--white);
+    height: 44px;
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    position: relative;
+    min-width: 180px;
+}
+
+.file-display::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    pointer-events: none;
+    box-shadow: var(--shadow);
+}
+
+.file-name {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    color: var(--text-light);
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-upload-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    height: 44px;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--primary-color);
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    white-space: nowrap;
+    position: relative;
+}
+
+.file-upload-btn:hover {
+    background-color: rgba(0, 99, 229, 0.08);
+}
+
+.file-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.submit-btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    padding: 10px 20px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 40px;
+    min-width: 120px;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Responsive Design for Forms */
+@media (max-width: 768px) {
+    .form-page-container {
+        padding: 20px;
+        margin: 16px;
+    }
+    
+    .form-header {
+        padding: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .form-page-title {
+        font-size: 18px;
+    }
+    
+    .form-fields {
+        gap: 20px;
+    }
+    
+    .file-input-wrapper {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .file-display {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .file-upload-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .form-actions {
+        justify-content: center;
+    }
+    
+    .submit-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-page-container {
+        padding: 16px;
+        margin: 8px;
+        border-radius: 8px;
+    }
+    
+    .form-header {
+        padding: 12px;
+    }
+    
+    .form-page-title {
+        font-size: 16px;
+    }
+}
+
+/* Login/Signup Form Container */
+.form-page-container {
+    background-color: var(--white);
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 480px;
+    margin: 40px auto;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.form-logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.form-logo {
+    max-width: 80px;
+    height: auto;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.form-page-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+}
+
+.form-subtitle {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+/* Form Fields */
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.input-label {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+.input-container {
+    background-color: var(--white);
+    height: 44px;
+    border-radius: var(--radius);
+    position: relative;
+    width: 100%;
+}
+
+.form-input {
+    width: 100%;
+    height: 100%;
+    padding: 12px 14px;
+    border: none;
+    border-radius: var(--radius);
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    background: transparent;
+    outline: none;
+    color: var(--text-dark);
+}
+
+.form-input::placeholder {
+    color: var(--text-light);
+}
+
+.input-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    pointer-events: none;
+    box-shadow: var(--shadow);
+}
+
+.input-container:focus-within::after {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 99, 229, 0.1);
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.submit-btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    padding: 12px 24px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    min-width: 130px;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Form Footer */
+.form-footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 14px;
+    font-family: 'Mulish', sans-serif;
+    color: var(--text-dark);
+}
+
+.form-link {
+    color: var(--primary-color);
+    text-decoration: underline;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.form-link:hover {
+    color: var(--primary-hover);
+}
+
+/* Responsive Design for Login/Signup Forms */
+@media (max-width: 768px) {
+    .form-page-container {
+        padding: 24px;
+        margin: 20px 16px;
+        max-width: none;
+    }
+    
+    .form-logo-section {
+        margin-bottom: 24px;
+    }
+    
+    .form-header {
+        margin-bottom: 24px;
+    }
+    
+    .form-page-title {
+        font-size: 18px;
+    }
+    
+    .form-fields {
+        gap: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .form-actions {
+        margin-bottom: 20px;
+    }
+    
+    .submit-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-page-container {
+        padding: 20px;
+        margin: 16px 8px;
+        border-radius: 12px;
+    }
+    
+    .form-logo {
+        max-width: 60px;
+    }
+    
+    .form-page-title {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+    
+    .form-subtitle {
+        font-size: 13px;
+    }
+    
+    .submit-btn {
+        min-width: 100%;
+    }
+}
+
+.current-image-container {
+    width: 100%;
+}
+
+.current-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px;
+    background-color: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+}
+
+.employee-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid var(--border-color);
+}
+
+.current-image-label {
+    font-family: 'Mulish', sans-serif;
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+.no-image-available {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: var(--radius);
+    border: 1px dashed var(--border-color);
+}
+
+.no-image-text {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    color: var(--text-light);
+    font-style: italic;
+}
