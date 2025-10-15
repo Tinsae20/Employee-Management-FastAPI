@@ -3,12 +3,7 @@
 <div class="form-container">
     <!-- Logo Section -->
     <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 32px;">
-        <div style="display: flex; align-items: center; gap: 16px;">
-            <div style="position: relative; width: 40px; height: 40px;">
-                <div style="width: 40px; height: 40px; background-color: var(--primary-color); border-radius: 50%;"></div>
-                <div style="position: absolute; width: 26px; height: 30px; background-color: var(--white); top: 5px; left: 7px;"></div>
-            </div>
-        </div>
+        <img src="{{ url_for('static', path='assets/Logo.svg') }}" alt="Logo">
     </div>
     
     <!-- Welcome Text -->

@@ -1,35 +1,57 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Active Employees</h2>
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Image</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Salary</th>
-            <th scope="col">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for emp in employees %}
-        <tr>
-            <td>
-                {% if emp.image_url %}
-                <img src="{{ emp.image_url }}" alt="{{ emp.first_name }}'s photo" width="50">
-                {% else %}
-                No Image
-                {% endif %}
-            </td>
-            <td>{{ emp.first_name }} {{ emp.last_name }}</td>
-            <td>{{ emp.email }}</td>
-            <td>${{ "{:.2f}".format(emp.salary) }}</td>
-            <td>
-                <a href="/edit/{{ emp.id }}" class="btn btn-sm btn-primary">Edit</a>
-                <a href="/deactivate/{{ emp.id }}" class="btn btn-sm btn-danger">Deactivate</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="table-container">
+    <!-- Section Header -->
+    <div class="section-header">
+        <h2 class="section-title">Active Employees</h2>
+    </div>
+    
+    <!-- Table -->
+    <div class="table-content">
+        <!-- Table Header -->
+        <div class="table-header">
+            <div class="table-header-cell">Profile</div>
+            <div class="table-header-cell">Full Name</div>
+            <div class="table-header-cell">Email</div>
+            <div class="table-header-cell">Salary</div>
+            <div class="table-header-cell" style="padding-left: 20px;">Action</div>
+        </div>
+        
+        <!-- Table Rows -->
+        <div class="table-body">
+            {% for emp in employees %}
+            <div class="table-row {% if loop.index % 2 == 0 %}even{% else %}odd{% endif %}">
+                <div class="table-cell" data-label="Profile">
+                    <div class="employee-profile">
+                        {% if emp.image_url %}
+                        <img src="{{ emp.image_url }}" alt="{{ emp.first_name }}'s photo">
+                        {% else %}
+                        <div class="no-image">No Image</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="table-cell" data-label="Full Name">
+                    {{ emp.first_name }} {{ emp.last_name }}
+                </div>
+                <div class="table-cell" data-label="Email">
+                    {{ emp.email }}
+                </div>
+                <div class="table-cell" data-label="Salary">
+                    ${{ "{:.2f}".format(emp.salary) }}
+                </div>
+                <div class="table-cell" data-label="Action">
+                    <div class="action-buttons">
+                        <a href="/edit/{{ emp.id }}" class="edit-btn">
+                            <img src="{{ url_for('static', path='assets/Edit.svg') }}" alt="Edit">
+                        </a>
+                        <a href="/deactivate/{{ emp.id }}" class="delete-btn">
+                            <img src="{{ url_for('static', path='assets/Trash.svg') }}" alt="Trash">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}

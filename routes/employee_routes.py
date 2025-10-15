@@ -17,7 +17,6 @@ async def read_employees(request: Request, current_user: dict = Depends(get_curr
     try:
         response = supabase.table('employees').select('*').eq('is_active', True).execute()
         employees = response.data # type: ignore[attr-defined]
-        print("heree: ", employees)
     except Exception as e:
         print("Error fetching employees:", e)
     return templates.TemplateResponse("index.html", {"request": request, "employees": employees})
